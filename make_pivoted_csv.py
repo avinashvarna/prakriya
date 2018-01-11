@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Convert prakriya data to tsv format in a pivoted format
+Convert prakriya data to tsv in a pivoted format
 
 @author: alvarna
 """
@@ -58,8 +58,8 @@ lakAras_dev = map(to_devanagari, lakAras)
 puruSha = ["प्र", "म", "उ"]
 vachana = ["एक", "द्वि", "बहु"]
 pada = ["परस्मै", "आत्मने"]
-headers.extend("-".join(list(x[1]) + [x[0]]) \
-               for x in product(pada, product(lakAras_dev, puruSha, vachana)))
+headers.extend("-".join([x[0]] + list(x[2]) + [x[1]]) \
+               for x in product(lakAras_dev, pada, product(puruSha, vachana)))
 
 def to_tsv_row(details, forms):
     s = "\t".join(details)
